@@ -12,7 +12,7 @@ import com.example.jet2feed.databinding.ListItemArticlesBinding
 import com.example.jet2feed.model.Articles
 
 class RecyclerViewAdapter :
-    PagedListAdapter<Articles, RecyclerViewAdapter.RecyclerViewHolder>(USER_COMPARATOR) {
+    PagedListAdapter<Articles, RecyclerViewAdapter.RecyclerViewHolder>(ARTICLE_COMPARATOR) {
 
     // Creating ViewHolder
     class RecyclerViewHolder(private val binding: ListItemArticlesBinding) :
@@ -42,7 +42,7 @@ class RecyclerViewAdapter :
     }
 
     companion object {
-        private val USER_COMPARATOR = object : DiffUtil.ItemCallback<Articles>() {
+        private val ARTICLE_COMPARATOR = object : DiffUtil.ItemCallback<Articles>() {
             override fun areItemsTheSame(oldItem: Articles, newItem: Articles): Boolean =
                 oldItem.id == newItem.id
 

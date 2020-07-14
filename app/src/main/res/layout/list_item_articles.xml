@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="article"
             type="com.example.jet2feed.model.Articles" />
@@ -45,7 +47,7 @@
             android:layout_marginStart="@dimen/margin_small"
             android:fontFamily="sans-serif-black"
             android:text="@{article.user.get(0).name +` `+ article.user.get(0).lastName}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/textViewCreatedAt"
             app:layout_constraintStart_toEndOf="@id/cardViewProfile"
@@ -57,9 +59,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_small"
-            android:fontFamily="sans-serif"
-            android:text="@{article.user.get(0).designation}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            android:text="@{article.user.size()>0?article.user.get(0).designation:``}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintBottom_toBottomOf="@+id/cardViewProfile"
             app:layout_constraintEnd_toStartOf="@id/textViewCreatedAt"
             app:layout_constraintStart_toEndOf="@id/cardViewProfile"
@@ -71,10 +72,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_normal"
-            android:fontFamily="sans-serif"
             android:gravity="end"
-            android:text="@{article.createdAt}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:text="@{String.valueOf(article.getArticleDate())}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +89,7 @@
             android:contentDescription="@string/content_description_article_image"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background"
-            app:articleImage="@{article.media.get(0).image}"
+            app:articleImage="@{article.media.size()>0?article.media.get(0).image:``}"
             app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
             app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
             app:layout_constraintTop_toBottomOf="@+id/cardViewProfile" />
@@ -99,7 +99,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:fontFamily="sans-serif"
             android:text="@{article.content}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
@@ -112,9 +111,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:fontFamily="sans-serif"
-            android:text="@{article.media.get(0).title}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:text="@{article.media.size()>0?article.media.get(0).title:``}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
             app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
             app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
             app:layout_constraintTop_toBottomOf="@+id/textViewArticleContent"
@@ -125,8 +123,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:fontFamily="sans-serif"
-            android:text="@{article.media.get(0).url}"
+            android:text="@{article.media.size()>0?article.media.get(0).url:``}"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
             app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
@@ -138,9 +135,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:fontFamily="sans-serif"
             android:text="@{String.valueOf(article.likes)+` Likes`}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
             app:layout_constraintTop_toBottomOf="@+id/textViewArticleUrl"
@@ -148,16 +145,33 @@
 
         <TextView
             android:id="@+id/textViewArticleComments"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
-            android:fontFamily="sans-serif"
             android:text="@{String.valueOf(article.comments)+` Comments`}"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textColor="@android:color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewArticleUrl"
             tools:text="30K Comments" />
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewArticleLikes" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{article.media.size()>0 ? View.VISIBLE : View.GONE}"
+            app:constraint_referenced_ids="imageViewArticle,textViewArticleTitle,textViewArticleUrl" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

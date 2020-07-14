@@ -22,5 +22,4 @@ class ArticlesViewModel : ViewModel() {
         userPagedList = LivePagedListBuilder(itemDataSourceFactory, config)
             .build()
     }
-
 }

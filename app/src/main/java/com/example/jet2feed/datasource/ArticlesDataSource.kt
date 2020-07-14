@@ -9,6 +9,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
+
     private val service = RetrofitService.createService(ArticlesApi::class.java)
 
     override fun loadInitial(
@@ -30,7 +31,6 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
             override fun onFailure(call: Call<MutableList<Articles>>, t: Throwable) {
             }
         })
-
     }
 
     override fun loadAfter(
@@ -67,7 +67,6 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
             ) {
                 if (response.isSuccessful) {
                     val apiResponse = response.body()!!
-//                    val responseItems = apiResponse.users
                     val key = if (params.key > 1) params.key - 1 else 0
                     callback.onResult(apiResponse, key)
                 }

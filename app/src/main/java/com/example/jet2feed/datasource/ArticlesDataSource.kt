@@ -1,7 +1,7 @@
 package com.example.jet2feed.datasource
 
 import androidx.paging.PageKeyedDataSource
-import com.example.jet2feed.api.RetrofitService
+import com.example.jet2feed.api.RetrofitServiceBuilder
 import com.example.jet2feed.api.interfaces.ArticlesApi
 import com.example.jet2feed.model.Articles
 import retrofit2.Call
@@ -10,17 +10,18 @@ import retrofit2.Response
 
 class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
 
-    private val service = RetrofitService.createService(ArticlesApi::class.java)
+    private val service = RetrofitServiceBuilder.createService(ArticlesApi::class.java)
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Articles>
     ) {
         val call = service.fetchArticles(FIRST_PAGE, PAGE_SIZE)
-        call.enqueue(object : Callback<MutableList<Articles>> {
+
+        call.enqueue(object : Callback<List<Articles>> {
             override fun onResponse(
-                call: Call<MutableList<Articles>>,
-                response: Response<MutableList<Articles>>
+                call: Call<List<Articles>>,
+                response: Response<List<Articles>>
             ) {
                 if (response.isSuccessful) {
                     val apiResponse = response.body()!!
@@ -28,7 +29,7 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
                 }
             }
 
-            override fun onFailure(call: Call<MutableList<Articles>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Articles>>, t: Throwable) {
             }
         })
     }
@@ -38,10 +39,11 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
         callback: LoadCallback<Int, Articles>
     ) {
         val call = service.fetchArticles(params.key, PAGE_SIZE)
-        call.enqueue(object : Callback<MutableList<Articles>> {
+
+        call.enqueue(object : Callback<List<Articles>> {
             override fun onResponse(
-                call: Call<MutableList<Articles>>,
-                response: Response<MutableList<Articles>>
+                call: Call<List<Articles>>,
+                response: Response<List<Articles>>
             ) {
                 if (response.isSuccessful) {
                     val apiResponse = response.body()!!
@@ -50,7 +52,7 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
                 }
             }
 
-            override fun onFailure(call: Call<MutableList<Articles>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Articles>>, t: Throwable) {
             }
         })
     }
@@ -60,10 +62,11 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
         callback: LoadCallback<Int, Articles>
     ) {
         val call = service.fetchArticles(params.key, PAGE_SIZE)
-        call.enqueue(object : Callback<MutableList<Articles>> {
+
+        call.enqueue(object : Callback<List<Articles>> {
             override fun onResponse(
-                call: Call<MutableList<Articles>>,
-                response: Response<MutableList<Articles>>
+                call: Call<List<Articles>>,
+                response: Response<List<Articles>>
             ) {
                 if (response.isSuccessful) {
                     val apiResponse = response.body()!!
@@ -72,7 +75,7 @@ class ArticlesDataSource : PageKeyedDataSource<Int, Articles>() {
                 }
             }
 
-            override fun onFailure(call: Call<MutableList<Articles>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Articles>>, t: Throwable) {
             }
         })
     }

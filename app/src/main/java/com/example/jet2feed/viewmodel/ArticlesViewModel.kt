@@ -9,7 +9,7 @@ import com.example.jet2feed.datasource.ArticlesDataSourceFactory
 import com.example.jet2feed.model.Articles
 
 class ArticlesViewModel : ViewModel() {
-    var userPagedList: LiveData<PagedList<Articles>>
+    var articlesPagedList: LiveData<PagedList<Articles>>
     private var liveDataSource: LiveData<ArticlesDataSource>
 
     init {
@@ -19,7 +19,7 @@ class ArticlesViewModel : ViewModel() {
             .setEnablePlaceholders(false)
             .setPageSize(ArticlesDataSource.PAGE_SIZE)
             .build()
-        userPagedList = LivePagedListBuilder(itemDataSourceFactory, config)
+        articlesPagedList = LivePagedListBuilder(itemDataSourceFactory, config)
             .build()
     }
 }

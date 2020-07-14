@@ -1,6 +1,7 @@
-package com.example.jet2feed.api.activities
+package com.example.jet2feed.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -25,8 +26,9 @@ class ArticlesActivity : AppCompatActivity() {
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerViewArticle.adapter = articlesAdapter
 
-        viewModel.userPagedList.observe(this, Observer {
+        viewModel.articlesPagedList.observe(this, Observer {
             articlesAdapter.submitList(it)
+            progressBarArticles.visibility = View.GONE
         })
     }
 }

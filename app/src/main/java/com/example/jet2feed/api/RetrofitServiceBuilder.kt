@@ -3,7 +3,7 @@ package com.example.jet2feed.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitService {
+object RetrofitServiceBuilder {
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://5e99a9b1bc561b0016af3540.mockapi.io/jet2/api/")

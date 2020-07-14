@@ -6,9 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ArticlesApi {
+
     @GET("v1/blogs")
-    open fun fetchArticles(
+    fun fetchArticles(
         @Query("page") page: Int,
         @Query("limit") pageSize: Int
-    ): Call<MutableList<Articles>>
+    ): Call<List<Articles>>
 }

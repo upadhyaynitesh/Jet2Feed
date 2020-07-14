@@ -11,7 +11,7 @@
         android:layout_height="@dimen/profile_image_size"
         android:layout_margin="@dimen/margin_small"
         android:elevation="10dp"
-        app:cardBackgroundColor="@color/cardview_dark_background"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
         app:cardCornerRadius="35dp"
         app:layout_constraintEnd_toStartOf="@id/textViewCreatedAt"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,6 +22,7 @@
             android:id="@+id/imageViewProfile"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/content_description_profile_image"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background" />
     </androidx.cardview.widget.CardView>
@@ -36,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewCreatedAt"
         app:layout_constraintStart_toEndOf="@id/cardViewProfile"
         app:layout_constraintTop_toTopOf="@id/cardViewProfile"
-        tools:text="User Name"></TextView>
+        tools:text="User Name" />
 
     <TextView
         android:id="@+id/textViewDesignation"
@@ -49,7 +50,7 @@
         app:layout_constraintEnd_toStartOf="@id/textViewCreatedAt"
         app:layout_constraintStart_toEndOf="@id/cardViewProfile"
         app:layout_constraintTop_toBottomOf="@id/textViewUserName"
-        tools:text="User Designation"></TextView>
+        tools:text="User Designation" />
 
     <TextView
         android:id="@+id/textViewCreatedAt"
@@ -63,13 +64,14 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="1 min"></TextView>
+        tools:text="1 min" />
 
     <ImageView
         android:id="@+id/imageViewArticle"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginTop="@dimen/margin_small"
+        android:contentDescription="@string/content_description_article_image"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
@@ -86,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
         app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
         app:layout_constraintTop_toBottomOf="@+id/imageViewArticle"
-        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"></TextView>
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum" />
 
     <TextView
         android:id="@+id/textViewArticleTitle"
@@ -98,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
         app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
         app:layout_constraintTop_toBottomOf="@+id/textViewArticleContent"
-        tools:text="Article Title"></TextView>
+        tools:text="Article Title" />
 
     <TextView
         android:id="@+id/textViewArticleUrl"
@@ -110,30 +112,30 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
         app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
         app:layout_constraintTop_toBottomOf="@+id/textViewArticleTitle"
-        tools:text="Article Url"></TextView>
+        tools:text="Article Url" />
 
     <TextView
         android:id="@+id/textViewArticleLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        android:textStyle="bold"
         android:fontFamily="sans-serif"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
         app:layout_constraintTop_toBottomOf="@+id/textViewArticleUrl"
-        tools:text="45 Likes"></TextView>
+        tools:text="45 Likes" />
 
     <TextView
         android:id="@+id/textViewArticleComments"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        android:textStyle="bold"
         android:fontFamily="sans-serif"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
         app:layout_constraintTop_toBottomOf="@+id/textViewArticleUrl"
-        tools:text="30K Comments"></TextView>
+        tools:text="30K Comments" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

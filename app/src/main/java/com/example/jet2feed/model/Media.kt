@@ -14,6 +14,7 @@ data class Media(
     @SerializedName("title") val title: String,
     @SerializedName("url") val url: String
 ) {
+
     companion object {
         /*This will load the image downloaded using Glide in imageView of recycler items*/
         @BindingAdapter("articleImage")

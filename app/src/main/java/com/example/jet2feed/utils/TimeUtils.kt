@@ -12,6 +12,8 @@ import java.util.*
 
 object TimeUtils {
 
+    private const val serverDateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun getCurrentTime(): String {
         val current = LocalDateTime.now(ZoneId.systemDefault())
@@ -33,7 +35,7 @@ object TimeUtils {
 
     private fun getDateInMillis(srcDate: String): Long {
         val desiredFormat = SimpleDateFormat(
-            "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()
+            serverDateFormat, Locale.getDefault()
         )
         val dateInMillis: Long
         try {

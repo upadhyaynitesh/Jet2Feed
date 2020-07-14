@@ -84,7 +84,7 @@
         <ImageView
             android:id="@+id/imageViewArticle"
             android:layout_width="0dp"
-            android:layout_height="200dp"
+            android:layout_height="170dp"
             android:layout_marginTop="@dimen/margin_small"
             android:contentDescription="@string/content_description_article_image"
             android:scaleType="centerCrop"
@@ -127,6 +127,7 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintEnd_toEndOf="@+id/textViewCreatedAt"
             app:layout_constraintStart_toStartOf="@+id/cardViewProfile"
+            android:autoLink="web"
             app:layout_constraintTop_toBottomOf="@+id/textViewArticleTitle"
             tools:text="Article Url" />
 

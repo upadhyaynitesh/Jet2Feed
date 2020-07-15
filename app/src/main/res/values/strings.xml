@@ -9,10 +9,4 @@
     <!--Content Description-->
     <string name="content_description_profile_image">Profile Image</string>
     <string name="content_description_article_image">Article Image</string>
-
-    <!--Main Screen...No data available-->
-    <string name="alert_title">No Data Available!</string>
-    <string name="alert_message">There is no data available currently. Please try again when internet connection is back.</string>
-    <string name="alert_positive_btn">OK</string>
-
 </resources>

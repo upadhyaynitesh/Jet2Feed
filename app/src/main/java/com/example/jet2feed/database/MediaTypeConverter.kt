@@ -2,7 +2,6 @@ package com.example.jet2feed.database
 
 import androidx.room.TypeConverter
 import com.example.jet2feed.model.Media
-import com.example.jet2feed.model.User
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
